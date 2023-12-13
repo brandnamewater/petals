@@ -3,9 +3,11 @@ import logging
 
 import configargparse
 import torch
+
 from hivemind.proto.runtime_pb2 import CompressionType
 from hivemind.utils import limits
 from hivemind.utils.logging import get_logger
+
 from humanfriendly import parse_size
 
 from petals.constants import DTYPE_MAP, PUBLIC_INITIAL_PEERS
@@ -17,6 +19,7 @@ logger = get_logger(__name__)
 
 
 def main():
+    print("main")
     # fmt:off
     parser = configargparse.ArgParser(default_config_files=["config.yml"],
                                       formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -164,6 +167,7 @@ def main():
     parser.add_argument("--adapters", nargs='*', default=(),
                         help="List of pre-loaded LoRA adapters that can be used for inference or training")
 
+    print("main args")
     # fmt:on
     args = vars(parser.parse_args())
     args.pop("config", None)
@@ -210,6 +214,7 @@ def main():
     if quant_type is not None:
         args["quant_type"] = QuantType[quant_type.upper()]
 
+    print("validating version...")
     validate_version()
 
     if not torch.backends.openmp.is_available():

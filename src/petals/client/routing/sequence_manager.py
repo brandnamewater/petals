@@ -401,6 +401,7 @@ class RemoteSequenceManager:
                 self.update(wait=False)
 
     def on_request_success(self, peer_id: PeerID):
+        print("on_request_success", peer_id)
         """if peer has a failure streak, clear that streak"""
         self.state.banned_peers.register_success(peer_id)
 

@@ -224,7 +224,9 @@ class InferenceSession:
         server_sessions = []
         try:
             for span in chosen_spans:
+                print("for span in chosen_spans span", span)
                 span_uids = CHAIN_DELIMITER.join(self._sequence_manager.block_uids[span.start : span.end])
+                print("_enter_server_sessions span_uids", span_uids)
                 metadata = self._sequence_manager.get_request_metadata("rpc_inference", span_uids, peer_id=span.peer_id)
                 session = RemoteExpertWorker.run_coroutine(
                     _ServerInferenceSession.create(

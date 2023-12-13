@@ -10,6 +10,20 @@
 
 Generate text with distributed **Llama 2** (70B), **Falcon** (40B+), **BLOOM** (176B) (or their derivatives), and fine‑tune them for your own tasks &mdash; right from your desktop computer or Google Colab:
 
+Private swarm ?
+issies:
+- https://github.com/bigscience-workshop/petals/issues/536
+```
+pip install .
+
+or
+
+pip install . --no-cache-dir 
+
+for free ec2 testing
+
+```
+
 ```python
 from transformers import AutoTokenizer
 from petals import AutoDistributedModelForCausalLM
