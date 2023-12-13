@@ -68,6 +68,7 @@ class RemoteGenerationMixin(_SkipTokensMixin):
     def generate(
         self, inputs: Optional[torch.Tensor] = None, *args, session: Optional[InferenceSession] = None, **kwargs
     ):
+        print("generate()")
         self._fix_generate_kwargs(kwargs)
         if inputs is None:
             inputs = kwargs.pop("input_ids", None)
