@@ -87,6 +87,7 @@ class AutoDistributedModel(DefaultRevisionMixin, _AutoDistributedBase):
 
 
 class AutoDistributedModelForCausalLM(DefaultRevisionMixin, _AutoDistributedBase):
+    print("AutoDistributedModelForCausalLM called")
     _mapping_field = "model_for_causal_lm"
 
 
