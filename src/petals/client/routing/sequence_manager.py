@@ -172,7 +172,7 @@ class RemoteSequenceManager:
                 # [f"{span.start}:{span.end} via …{str(span.peer_id)[-6:]}" for span in span_sequence]
                 [f"{span.start}:{span.end} via {str(span.peer_id)}" for span in span_sequence]
             )
-            logger.info(f"Route found: {route_repr}")
+            logger.info(f"Route found here: {route_repr}")
         return span_sequence
 
     def _make_sequence_with_min_latency(
