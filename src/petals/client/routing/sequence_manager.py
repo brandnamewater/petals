@@ -401,6 +401,7 @@ class RemoteSequenceManager:
                 self.ready.clear()
                 self.update(wait=False)
 
+    
     def on_request_success(self, peer_id: PeerID):
         print("on_request_success", peer_id)
         self.dht.store(
@@ -409,6 +410,10 @@ class RemoteSequenceManager:
             value="yolo this is a test value i fart on people",
             expiration_time=get_dht_time() + 100000,
         )
+        print("self.dht.store")
+
+        get_test = self.dht.get(key="_petals.testkey")
+        print("get_test", get_test)
 
         """if peer has a failure streak, clear that streak"""
         self.state.banned_peers.register_success(peer_id)
