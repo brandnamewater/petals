@@ -13,7 +13,7 @@ from weakref import WeakMethod
 
 import dijkstar
 import numpy as np
-from hivemind import DHT, P2P, MSGPackSerializer, PeerID
+from hivemind import DHT, P2P, MSGPackSerializer, PeerID, get_dht_time
 from hivemind.dht.node import Blacklist
 from hivemind.moe.client.remote_expert_worker import RemoteExpertWorker
 from hivemind.proto import runtime_pb2
@@ -403,6 +403,13 @@ class RemoteSequenceManager:
 
     def on_request_success(self, peer_id: PeerID):
         print("on_request_success", peer_id)
+        self.dht.store(
+            key="_petals.testkey",
+            subkey="",
+            value="yolo this is a test value i fart on people",
+            expiration_time=get_dht_time() + 100000,
+        )
+
         """if peer has a failure streak, clear that streak"""
         self.state.banned_peers.register_success(peer_id)
 
