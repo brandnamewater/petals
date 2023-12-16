@@ -214,7 +214,6 @@ def main():
     if quant_type is not None:
         args["quant_type"] = QuantType[quant_type.upper()]
 
-    print("validating version...")
     validate_version()
 
     if not torch.backends.openmp.is_available():

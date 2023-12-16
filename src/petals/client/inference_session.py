@@ -68,6 +68,7 @@ class _ServerInferenceSession:
     ) -> _ServerInferenceSession:
         """Create a new session for a given remote module. This code is meant to be run inside RemoteExpertWorker"""
         stub = TransformerConnectionHandler.get_stub(p2p, span.peer_id)
+        print("inference_session create stub", stub)
         inputs_queue = asyncio.Queue()
         outputs_stream = await asyncio.wait_for(
             stub.rpc_inference(cls._read_inputs_from_queue(inputs_queue)),
@@ -239,6 +240,7 @@ class InferenceSession:
                         **metadata,
                     )
                 )
+                print("session", session)
                 server_sessions.append(session)
                 session.__enter__()
             return server_sessions
