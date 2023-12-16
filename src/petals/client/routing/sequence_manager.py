@@ -403,6 +403,9 @@ class RemoteSequenceManager:
 
     
     def on_request_success(self, peer_id: PeerID):
+        get_test = self.dht.get(key="_petals.testkey")
+        print("get_test", get_test)
+
         print("on_request_success", peer_id)
         self.dht.store(
             key="_petals.testkey",
@@ -412,8 +415,8 @@ class RemoteSequenceManager:
         )
         print("self.dht.store")
 
-        get_test = self.dht.get(key="_petals.testkey")
-        print("get_test", get_test)
+        get_test2 = self.dht.get(key="_petals.testkey")
+        print("get_test2", get_test2)
 
         """if peer has a failure streak, clear that streak"""
         self.state.banned_peers.register_success(peer_id)
